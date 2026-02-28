@@ -1,47 +1,57 @@
 /* ==========================================================================
    AssistIndependence Design System — CSS Custom Properties
+   Neumorphism Edition — Warm, tactile, sculpted aesthetic
    ========================================================================== */
 
 :root {
-  /* --- Brand Colors --- */
-  --color-warm-blue: #4A90A4;
-  --color-warm-blue-dark: #3A7A8E;
-  --color-warm-blue-light: #6AABB8;
-  --color-warm-blue-bg: rgba(74, 144, 164, 0.08);
+  /* --- Neumorphic Base Surface --- */
+  --color-bg: #e4e0d8;
+  --color-bg-light: #edeae3;
+  --color-bg-dark: #d5d1c9;
 
-  --color-soft-teal: #5FBFB3;
-  --color-soft-teal-dark: #4DA89D;
-  --color-soft-teal-light: #7DD1C7;
+  /* --- Brand Colors (Terracotta / Copper) --- */
+  --color-warm-blue: #b86e4a;
+  --color-warm-blue-dark: #a35d3b;
+  --color-warm-blue-light: #c9876a;
+  --color-warm-blue-bg: rgba(184, 110, 74, 0.08);
 
-  --color-warm-gray: #6B7280;
-  --color-warm-gray-dark: #4B5563;
-  --color-warm-gray-light: #9CA3AF;
+  --color-soft-teal: #c4865e;
+  --color-soft-teal-dark: #b86e4a;
+  --color-soft-teal-light: #d4a07e;
 
-  --color-cream: #FAF8F5;
-  --color-cream-dark: #F0ECE6;
+  --color-warm-gray: #6b655c;
+  --color-warm-gray-dark: #4a4640;
+  --color-warm-gray-light: #9a9389;
 
-  --color-soft-coral: #E8927C;
-  --color-soft-coral-dark: #D97B63;
-  --color-sage-green: #8FAE8B;
-  --color-sage-green-dark: #7A9A76;
+  --color-cream: #edeae3;
+  --color-cream-dark: #e4e0d8;
+
+  --color-soft-coral: #b86e4a;
+  --color-soft-coral-dark: #a35d3b;
+  --color-sage-green: #5e8a5a;
+  --color-sage-green-dark: #4d7649;
 
   /* --- Neutrals --- */
-  --color-white: #FFFFFF;
-  --color-black: #1F2937;
-  --color-text: #4B5563;
-  --color-text-light: #6B7280;
-  --color-border: #E5E7EB;
-  --color-border-light: #F3F4F6;
+  --color-white: #e4e0d8;
+  --color-black: #3a3632;
+  --color-text: #4a4640;
+  --color-text-light: #7d766c;
+  --color-border: #ccc8c0;
+  --color-border-light: #d5d1c9;
 
   /* --- Semantic --- */
-  --color-success: #8FAE8B;
-  --color-warning: #E8927C;
-  --color-error: #DC2626;
-  --color-focus: #4A90A4;
-  --color-star: #F59E0B;
+  --color-success: #5e8a5a;
+  --color-warning: #b86e4a;
+  --color-error: #b54d4d;
+  --color-focus: #b86e4a;
+  --color-star: #d4a06a;
+
+  /* --- Footer (dark warm brown, separate from heading color) --- */
+  --color-footer-bg: #2c2723;
 
   /* --- Typography --- */
-  --font-family: 'Source Sans 3', 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-display: 'Lora', Georgia, 'Times New Roman', serif;
 
   --fs-xs: 0.75rem;
   --fs-sm: 0.875rem;
@@ -81,18 +91,26 @@
   --container-max: 1200px;
   --header-h: 72px;
 
-  /* --- Border Radius --- */
-  --r-sm: 0.25rem;
-  --r-md: 0.5rem;
-  --r-lg: 0.75rem;
-  --r-xl: 1rem;
+  /* --- Border Radius (softened for neumorphism) --- */
+  --r-sm: 0.5rem;
+  --r-md: 0.75rem;
+  --r-lg: 1rem;
+  --r-xl: 1.25rem;
+  --r-2xl: 1.5rem;
   --r-full: 9999px;
 
-  /* --- Shadows --- */
-  --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
-  --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.07), 0 2px 4px -2px rgba(0,0,0,0.05);
-  --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.08), 0 4px 6px -4px rgba(0,0,0,0.04);
-  --shadow-xl: 0 20px 25px -5px rgba(0,0,0,0.08), 0 8px 10px -6px rgba(0,0,0,0.04);
+  /* --- Neumorphic Shadow System --- */
+  --shadow-light: #f0ece5;
+  --shadow-dark: #c5c1b9;
+  --inset-light: #ebe7e0;
+  --inset-dark: #ccc8c0;
+
+  --shadow-sm: 1px 1px 3px var(--shadow-dark), -1px -1px 3px var(--shadow-light);
+  --shadow-md: 4px 4px 10px var(--shadow-dark), -4px -4px 10px var(--shadow-light);
+  --shadow-lg: 8px 8px 16px var(--shadow-dark), -8px -8px 16px var(--shadow-light);
+  --shadow-xl: 10px 10px 20px var(--shadow-dark), -10px -10px 20px var(--shadow-light);
+  --shadow-inset: inset 3px 3px 8px var(--inset-dark), inset -3px -3px 8px var(--inset-light);
+  --shadow-inset-sm: inset 2px 2px 5px var(--inset-dark), inset -2px -2px 5px var(--inset-light);
 
   /* --- Transitions --- */
   --tr-fast: 150ms ease;

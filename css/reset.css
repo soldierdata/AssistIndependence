@@ -40,9 +40,14 @@ table { border-collapse: collapse; }
   }
 }
 
+::selection {
+  background: rgba(184, 110, 74, 0.2);
+  color: var(--color-black);
+}
+
 :focus-visible {
   outline: 3px solid var(--color-focus);
-  outline-offset: 2px;
+  outline-offset: 3px;
   border-radius: var(--r-sm);
 }
 :focus:not(:focus-visible) { outline: none; }
