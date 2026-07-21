@@ -91,7 +91,7 @@
 .search-input-wrapper svg { width: 24px; height: 24px; color: var(--color-warm-gray-light); flex-shrink: 0; }
 .search-input {
   flex: 1; border: none; font-size: var(--fs-lg); color: var(--color-black);
-  outline: none; padding: var(--sp-2) 0; background: transparent;
+  padding: var(--sp-2) 0; background: transparent;
 }
 .search-input::placeholder { color: var(--color-warm-gray-light); }
 .search-hint { font-size: var(--fs-sm); color: var(--color-text-light); margin-top: var(--sp-3); }

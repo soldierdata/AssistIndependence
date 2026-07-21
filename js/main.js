@@ -88,6 +88,10 @@
     btn.addEventListener('click', function () {
       var expanded = this.getAttribute('aria-expanded') === 'true';
       var answer = document.getElementById(this.getAttribute('aria-controls'));
+      if (!answer) {
+        answer = (this.parentElement && this.parentElement.querySelector('.faq-answer'))
+          || this.nextElementSibling;
+      }
       if (!answer) return;
       this.setAttribute('aria-expanded', String(!expanded));
       answer.classList.toggle('is-open', !expanded);
@@ -97,25 +101,17 @@
   /* --- Filter / Sort (product listing pages) --- */
   var filterBar = document.getElementById('filter-bar');
   if (filterBar) {
-    var cards = Array.from(document.querySelectorAll('.product-card[data-price][data-rating]'));
+    var cards = Array.from(document.querySelectorAll('.product-card[data-rating]'));
     var container = document.getElementById('product-list');
     var sortSelect = document.getElementById('sort-select');
-    var priceSelect = document.getElementById('price-filter');
     var chips = document.querySelectorAll('.filter-chip');
 
     var activeFeatures = new Set();
 
     function applyFilters() {
       var sort = sortSelect ? sortSelect.value : 'rating-desc';
-      var priceRange = priceSelect ? priceSelect.value : 'all';
 
       var filtered = cards.filter(function (c) {
-        var price = parseFloat(c.dataset.price);
-        if (priceRange === 'under-25' && price >= 25) return false;
-        if (priceRange === '25-50' && (price < 25 || price > 50)) return false;
-        if (priceRange === '50-100' && (price < 50 || price > 100)) return false;
-        if (priceRange === 'over-100' && price < 100) return false;
-
         if (activeFeatures.size > 0) {
           var feats = (c.dataset.features || '').split(',');
           var match = false;
@@ -127,8 +123,6 @@
 
       filtered.sort(function (a, b) {
         if (sort === 'rating-desc') return parseFloat(b.dataset.rating) - parseFloat(a.dataset.rating);
-        if (sort === 'price-asc') return parseFloat(a.dataset.price) - parseFloat(b.dataset.price);
-        if (sort === 'price-desc') return parseFloat(b.dataset.price) - parseFloat(a.dataset.price);
         if (sort === 'reviews-desc') return parseInt(b.dataset.reviews) - parseInt(a.dataset.reviews);
         return 0;
       });
@@ -140,7 +134,6 @@
     }
 
     if (sortSelect) sortSelect.addEventListener('change', applyFilters);
-    if (priceSelect) priceSelect.addEventListener('change', applyFilters);
     chips.forEach(function (chip) {
       chip.addEventListener('click', function () {
         var feat = this.dataset.feature;
@@ -159,72 +152,6 @@
     }, { passive: true });
     backBtn.addEventListener('click', function () {
       window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-  }
-
-  /* --- Contact Form Validation --- */
-  var contactForm = document.getElementById('contact-form');
-  if (contactForm) {
-    contactForm.addEventListener('submit', function (e) {
-      e.preventDefault();
-      var valid = true;
-      var fields = [
-        { id: 'contact-name', errId: 'name-error', test: function (v) { return v.trim().length > 0; } },
-        { id: 'contact-email', errId: 'email-error', test: function (v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()); } },
-        { id: 'contact-topic', errId: 'topic-error', test: function (v) { return v.length > 0; } },
-        { id: 'contact-message', errId: 'message-error', test: function (v) { return v.trim().length > 0; } }
-      ];
-      fields.forEach(function (f) {
-        var input = document.getElementById(f.id);
-        var err = document.getElementById(f.errId);
-        if (!input || !err) return;
-        if (!f.test(input.value)) {
-          err.hidden = false; input.setAttribute('aria-describedby', f.errId); valid = false;
-        } else {
-          err.hidden = true; input.removeAttribute('aria-describedby');
-        }
-      });
-      if (valid) {
-        var btn = contactForm.querySelector('button[type="submit"]');
-        btn.textContent = 'Message Sent!'; btn.disabled = true;
-        btn.style.backgroundColor = 'var(--color-sage-green)';
-        btn.style.borderColor = 'var(--color-sage-green)';
-        contactForm.reset();
-        setTimeout(function () {
-          btn.textContent = 'Send Message'; btn.disabled = false;
-          btn.style.backgroundColor = ''; btn.style.borderColor = '';
-        }, 3000);
-      } else {
-        var first = contactForm.querySelector('[aria-describedby]');
-        if (first) first.focus();
-      }
-    });
-    contactForm.querySelectorAll('input,select,textarea').forEach(function (f) {
-      f.addEventListener('input', function () {
-        var errId = this.id.replace('contact-', '') + '-error';
-        var err = document.getElementById(errId);
-        if (err) { err.hidden = true; this.removeAttribute('aria-describedby'); }
-      });
-    });
-  }
-
-  /* --- Newsletter --- */
-  var nlForm = document.querySelector('.newsletter-form');
-  if (nlForm) {
-    nlForm.addEventListener('submit', function (e) {
-      e.preventDefault();
-      var inp = nlForm.querySelector('input[type="email"]');
-      var btn = nlForm.querySelector('button[type="submit"]');
-      if (inp.value.trim() && inp.validity.valid) {
-        btn.textContent = 'Subscribed!'; btn.disabled = true;
-        btn.style.backgroundColor = 'var(--color-sage-green)';
-        btn.style.borderColor = 'var(--color-sage-green)';
-        inp.value = '';
-        setTimeout(function () {
-          btn.textContent = 'Subscribe'; btn.disabled = false;
-          btn.style.backgroundColor = ''; btn.style.borderColor = '';
-        }, 3000);
-      }
     });
   }
 

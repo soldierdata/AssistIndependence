@@ -1,53 +1,59 @@
 /* ==========================================================================
    AssistIndependence Design System — CSS Custom Properties
-   Neumorphism Edition — Warm, tactile, sculpted aesthetic
+   Palette A "Calm Teal" — high-contrast, senior-friendly (WCAG AA/AAA)
+   White cards on a soft cool ground; teal for brand/links, warm coral for action.
    ========================================================================== */
 
 :root {
-  /* --- Neumorphic Base Surface --- */
-  --color-bg: #e4e0d8;
-  --color-bg-light: #edeae3;
-  --color-bg-dark: #d5d1c9;
+  /* --- Base Surfaces --- */
+  --color-bg: #f4f6f5;          /* soft cool-neutral page ground */
+  --color-bg-light: #ffffff;
+  --color-bg-dark: #e9ece9;     /* faint neutral for placeholders */
 
-  /* --- Brand Colors (Terracotta / Copper) --- */
-  --color-warm-blue: #b86e4a;
-  --color-warm-blue-dark: #a35d3b;
-  --color-warm-blue-light: #c9876a;
-  --color-warm-blue-bg: rgba(184, 110, 74, 0.08);
+  /* --- Brand: Teal (headings accent, links, labels, nav) --- */
+  --color-warm-blue: #0f6b62;        /* primary/link teal (5.9:1 on page, 6.4:1 on card) */
+  --color-warm-blue-dark: #0b524b;   /* hover */
+  --color-warm-blue-light: #2f8c82;
+  --color-warm-blue-bg: rgba(15, 107, 98, 0.08);
 
-  --color-soft-teal: #c4865e;
-  --color-soft-teal-dark: #b86e4a;
-  --color-soft-teal-light: #d4a07e;
+  /* --- Action: Warm Coral (primary CTAs / buttons) --- */
+  --color-cta: #c8461f;              /* button bg; white text 4.8:1 */
+  --color-cta-dark: #a5390f;         /* hover */
 
-  --color-warm-gray: #6b655c;
-  --color-warm-gray-dark: #4a4640;
-  --color-warm-gray-light: #9a9389;
+  --color-soft-teal: #178a7e;        /* decorative teal (logo icon, checks) */
+  --color-soft-teal-dark: #0f6b62;
+  --color-soft-teal-light: #6bb3aa;
 
-  --color-cream: #edeae3;
-  --color-cream-dark: #e4e0d8;
+  --color-warm-gray: #4a544f;
+  --color-warm-gray-dark: #2f3833;
+  --color-warm-gray-light: #5a635f;  /* was #9a9389 (2.3:1, failed); now AA muted */
 
-  --color-soft-coral: #b86e4a;
-  --color-soft-coral-dark: #a35d3b;
-  --color-sage-green: #5e8a5a;
-  --color-sage-green-dark: #4d7649;
+  --color-cream: #eef1ef;            /* section-alt band, distinct from white cards + page */
+  --color-cream-dark: #e4e8e5;
+
+  --color-soft-coral: #c8461f;
+  --color-soft-coral-dark: #a5390f;
+  --color-warm-coral: #c0492b;       /* cons / "x" marks (was undefined) */
+  --color-sage-green: #3f7d4e;       /* pros / success */
+  --color-sage-green-dark: #2f6b3f;
 
   /* --- Neutrals --- */
-  --color-white: #e4e0d8;
-  --color-black: #3a3632;
-  --color-text: #4a4640;
-  --color-text-light: #7d766c;
-  --color-border: #ccc8c0;
-  --color-border-light: #d5d1c9;
+  --color-white: #ffffff;            /* card surface — fixes beige-on-beige (F12) */
+  --color-black: #16201d;
+  --color-text: #1e2422;             /* body ink — ~15:1 (AAA) */
+  --color-text-light: #5a635f;       /* muted text — ~6:1 (AA) */
+  --color-border: #dcdfdb;           /* visible card/element border */
+  --color-border-light: #e6e9e5;
 
   /* --- Semantic --- */
-  --color-success: #5e8a5a;
-  --color-warning: #b86e4a;
-  --color-error: #b54d4d;
-  --color-focus: #b86e4a;
-  --color-star: #d4a06a;
+  --color-success: #3f7d4e;
+  --color-warning: #c8461f;
+  --color-error: #b3261e;
+  --color-focus: #0f6b62;            /* focus ring teal — 6.4:1 on white */
+  --color-star: #cf9a2f;             /* rating stars (warm gold) */
 
-  /* --- Footer (dark warm brown, separate from heading color) --- */
-  --color-footer-bg: #2c2723;
+  /* --- Footer (deep teal-charcoal) --- */
+  --color-footer-bg: #14302c;
 
   /* --- Typography --- */
   --font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -91,7 +97,7 @@
   --container-max: 1200px;
   --header-h: 72px;
 
-  /* --- Border Radius (softened for neumorphism) --- */
+  /* --- Border Radius --- */
   --r-sm: 0.5rem;
   --r-md: 0.75rem;
   --r-lg: 1rem;
@@ -99,18 +105,18 @@
   --r-2xl: 1.5rem;
   --r-full: 9999px;
 
-  /* --- Neumorphic Shadow System --- */
-  --shadow-light: #f0ece5;
-  --shadow-dark: #c5c1b9;
-  --inset-light: #ebe7e0;
-  --inset-dark: #ccc8c0;
+  /* --- Shadow System (clean soft drop-shadows; replaces neumorphism) --- */
+  --shadow-light: rgba(255, 255, 255, 0.6);
+  --shadow-dark: rgba(20, 30, 26, 0.14);
+  --inset-light: rgba(255, 255, 255, 0.5);
+  --inset-dark: rgba(20, 30, 26, 0.10);
 
-  --shadow-sm: 1px 1px 3px var(--shadow-dark), -1px -1px 3px var(--shadow-light);
-  --shadow-md: 4px 4px 10px var(--shadow-dark), -4px -4px 10px var(--shadow-light);
-  --shadow-lg: 8px 8px 16px var(--shadow-dark), -8px -8px 16px var(--shadow-light);
-  --shadow-xl: 10px 10px 20px var(--shadow-dark), -10px -10px 20px var(--shadow-light);
-  --shadow-inset: inset 3px 3px 8px var(--inset-dark), inset -3px -3px 8px var(--inset-light);
-  --shadow-inset-sm: inset 2px 2px 5px var(--inset-dark), inset -2px -2px 5px var(--inset-light);
+  --shadow-sm: 0 1px 2px rgba(20, 30, 26, 0.06);
+  --shadow-md: 0 1px 3px rgba(20, 30, 26, 0.06), 0 6px 16px rgba(20, 30, 26, 0.07);
+  --shadow-lg: 0 2px 6px rgba(20, 30, 26, 0.07), 0 14px 30px rgba(20, 30, 26, 0.09);
+  --shadow-xl: 0 4px 10px rgba(20, 30, 26, 0.08), 0 22px 44px rgba(20, 30, 26, 0.10);
+  --shadow-inset: inset 0 1px 2px rgba(20, 30, 26, 0.08);
+  --shadow-inset-sm: inset 0 1px 2px rgba(20, 30, 26, 0.06);
 
   /* --- Transitions --- */
   --tr-fast: 150ms ease;

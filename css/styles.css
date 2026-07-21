@@ -1,7 +1,7 @@
-@import url('variables.css');
-@import url('reset.css');
-@import url('components.css');
-@import url('layout.css');
+@import url('variables.css?v=3');
+@import url('reset.css?v=3');
+@import url('components.css?v=3');
+@import url('layout.css?v=3');
 
 /* --- Consistent product-image sizing across all card types --- */
 /* Product photos are white-background JPGs; give them a clean white,
@@ -24,4 +24,11 @@
   height: auto;
   object-fit: contain;
   display: block;
+}
+
+/* --- Homepage "Top Rated": wrap the scroll row on wider screens so no
+   product is hidden off-canvas (F20). Mobile keeps the touch scroller. --- */
+@media (min-width: 900px) {
+  .scroll-row { flex-wrap: wrap; overflow-x: visible; justify-content: center; }
+  .scroll-row > * { scroll-snap-align: none; }
 }
