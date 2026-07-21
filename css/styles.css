@@ -2,3 +2,26 @@
 @import url('reset.css');
 @import url('components.css');
 @import url('layout.css');
+
+/* --- Consistent product-image sizing across all card types --- */
+/* Product photos are white-background JPGs; give them a clean white,
+   evenly-padded area and let each image fill it uniformly (contain,
+   preserving aspect ratio and centered) instead of rendering at its
+   own natural size. Fixes small / mismatched images site-wide. */
+.product-card-image,
+.card-image,
+.mini-product-card .card-image {
+  background: #ffffff;
+  padding: var(--sp-4);
+  overflow: hidden;
+}
+.product-card-image img,
+.card-image img,
+.mini-product-card .card-image img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
