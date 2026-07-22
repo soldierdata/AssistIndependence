@@ -1,7 +1,7 @@
-@import url('variables.css?v=3');
-@import url('reset.css?v=3');
-@import url('components.css?v=3');
-@import url('layout.css?v=3');
+@import url('variables.css?v=4');
+@import url('reset.css?v=4');
+@import url('components.css?v=4');
+@import url('layout.css?v=4');
 
 /* --- Consistent product-image sizing across all card types --- */
 /* Product photos are white-background JPGs; give them a clean white,

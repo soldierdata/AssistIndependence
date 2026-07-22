@@ -42,7 +42,10 @@
 @media (min-width: 1024px) {
   .main-nav { display: block; }
   .header-actions { display: flex; }
-  .mobile-menu-toggle { display: none; }
+  /* !important needed: the base .mobile-menu-toggle{display:flex} rule comes
+     later in source order and would otherwise win at desktop widths, leaving
+     a dead hamburger (its panel is force-hidden >=1024px). */
+  .mobile-menu-toggle { display: none !important; }
 }
 
 /* Mobile Menu Toggle */
